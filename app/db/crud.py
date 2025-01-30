@@ -1,6 +1,6 @@
 from sqlalchemy.orm import Session
 from . import models
-from app.schemas import task as schemas
+from app.schemas import tasks as schemas
 
 def get_tasks(db: Session, completed: bool = None, priority: int = None):
     query = db.query(models.Task)

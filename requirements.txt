@@ -1,6 +1,5 @@
-alembic
-databases
 fastapi
-pydantic
-sqlalchemy
 uvicorn
+sqlalchemy
+databases
+pydantic

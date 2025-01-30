@@ -30,7 +30,10 @@ def get_task(task_id: int, db: Session = Depends(get_db)):
 
 @router.put("/tasks/{task_id}/", response_model=TaskResponse)
 def update_task(task_id: int, task: TaskUpdate, db: Session = Depends(get_db)):
-    return crud.update_task(db, task_id, task)
+    updated_task = crud.update_task(db, task_id, task)
+    if not updated_task:
+        raise HTTPException(status_code=404, detail="Task not found")
+    return updated_task
 
 @router.delete("/tasks/{task_id}/")
 def delete_task(task_id: int, db: Session = Depends(get_db)):
