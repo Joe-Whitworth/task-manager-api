@@ -1,4 +1,4 @@
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, ConfigDict, Field
 from datetime import datetime
 from typing import Optional
 
@@ -19,8 +19,7 @@ class TaskUpdate(BaseModel):
     completed: Optional[bool] = None
 
 class TaskResponse(TaskBase):
-    id: int
+    id: str  
     completed: bool
 
-    class Config:
-        from_attributes = True
+    model_config = ConfigDict(from_attributes=True)
