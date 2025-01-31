@@ -3,7 +3,6 @@ from contextlib import asynccontextmanager
 from app.db.database import engine, Base, database
 from app.api.routes import router
 
-# Create database tables
 Base.metadata.create_all(bind=engine)
 
 @asynccontextmanager
